@@ -1,9 +1,15 @@
 {
   "platforms": [
-    { "id": "windows", "name": "Windows", "download": "Windows" },
-    { "id": "android", "name": "Android", "download": "Android" },
-    { "id": "mac", "name": "Apple Mac", "download": "Mac" },
-    { "id": "ios", "name": "iPhone and iPad (iOS)", "short": "iOS", "download": "iOS" }
+    {
+      "id": "windows",
+      "name": "Windows",
+      "download": "Windows"
+    },
+    {
+      "id": "android",
+      "name": "Android",
+      "download": "Android"
+    }
   ],
   "products": [
     {
@@ -21,20 +27,56 @@
       "platforms": {
         "windows": {
           "minimum": [
-            ["System", "Windows 10 version 1809 or later (64-bit)"],
-            ["Processor", "64-bit (x64), 2 cores"],
-            ["Memory", "4 GB RAM"],
-            ["Storage", "400 MB free"],
-            ["Screen", "1280 × 720"],
-            ["Internet", "Needed for licence checks, updates and shared storage"]
+            [
+              "System",
+              "Windows 10 version 1809 or later (64-bit)"
+            ],
+            [
+              "Processor",
+              "64-bit (x64), 2 cores"
+            ],
+            [
+              "Memory",
+              "4 GB RAM"
+            ],
+            [
+              "Storage",
+              "400 MB free"
+            ],
+            [
+              "Screen",
+              "1280 × 720"
+            ],
+            [
+              "Internet",
+              "Needed for licence checks, updates and shared storage"
+            ]
           ],
           "recommended": [
-            ["System", "Windows 11 (64-bit)"],
-            ["Processor", "64-bit (x64), 4 cores or more"],
-            ["Memory", "8 GB RAM"],
-            ["Storage", "1 GB free (room for backups)"],
-            ["Screen", "1920 × 1080"],
-            ["Extras", "Windows Hello (face or fingerprint) for quick sign-in; a printer for A4 rotas"]
+            [
+              "System",
+              "Windows 11 (64-bit)"
+            ],
+            [
+              "Processor",
+              "64-bit (x64), 4 cores or more"
+            ],
+            [
+              "Memory",
+              "8 GB RAM"
+            ],
+            [
+              "Storage",
+              "1 GB free (room for backups)"
+            ],
+            [
+              "Screen",
+              "1920 × 1080"
+            ],
+            [
+              "Extras",
+              "Windows Hello (face or fingerprint) for quick sign-in; a printer for A4 rotas"
+            ]
           ],
           "setup": [
             "Download the installer and open it.",
@@ -46,18 +88,48 @@
         },
         "android": {
           "minimum": [
-            ["System", "Android 6.0 or later"],
-            ["Memory", "2 GB RAM"],
-            ["Storage", "300 MB free"],
-            ["Screen", "5-inch phone"],
-            ["Internet", "Needed for licence checks, updates and shared storage"]
+            [
+              "System",
+              "Android 6.0 or later"
+            ],
+            [
+              "Memory",
+              "2 GB RAM"
+            ],
+            [
+              "Storage",
+              "300 MB free"
+            ],
+            [
+              "Screen",
+              "5-inch phone"
+            ],
+            [
+              "Internet",
+              "Needed for licence checks, updates and shared storage"
+            ]
           ],
           "recommended": [
-            ["System", "Android 12 or later"],
-            ["Memory", "4 GB RAM"],
-            ["Storage", "500 MB free"],
-            ["Screen", "Tablet, or a 6-inch phone or larger"],
-            ["Extras", "Fingerprint or face unlock for quick sign-in"]
+            [
+              "System",
+              "Android 12 or later"
+            ],
+            [
+              "Memory",
+              "4 GB RAM"
+            ],
+            [
+              "Storage",
+              "500 MB free"
+            ],
+            [
+              "Screen",
+              "Tablet, or a 6-inch phone or larger"
+            ],
+            [
+              "Extras",
+              "Fingerprint or face unlock for quick sign-in"
+            ]
           ],
           "setup": [
             "Download the .apk on the phone or tablet.",
@@ -84,20 +156,56 @@
       "platforms": {
         "windows": {
           "minimum": [
-            ["System", "Windows 10 version 1809 or later (64-bit)"],
-            ["Processor", "64-bit (x64), 2 cores"],
-            ["Memory", "4 GB RAM"],
-            ["Storage", "400 MB free"],
-            ["Screen", "1280 × 720"],
-            ["Internet", "Needed to reach your business's shared storage"]
+            [
+              "System",
+              "Windows 10 version 1809 or later (64-bit)"
+            ],
+            [
+              "Processor",
+              "64-bit (x64), 2 cores"
+            ],
+            [
+              "Memory",
+              "4 GB RAM"
+            ],
+            [
+              "Storage",
+              "400 MB free"
+            ],
+            [
+              "Screen",
+              "1280 × 720"
+            ],
+            [
+              "Internet",
+              "Needed to reach your business's shared storage"
+            ]
           ],
           "recommended": [
-            ["System", "Windows 11 (64-bit)"],
-            ["Processor", "64-bit (x64), 4 cores"],
-            ["Memory", "8 GB RAM"],
-            ["Storage", "600 MB free"],
-            ["Screen", "1920 × 1080, or a touch screen for clocking in"],
-            ["Extras", "Windows Hello (face or fingerprint) for quick sign-in"]
+            [
+              "System",
+              "Windows 11 (64-bit)"
+            ],
+            [
+              "Processor",
+              "64-bit (x64), 4 cores"
+            ],
+            [
+              "Memory",
+              "8 GB RAM"
+            ],
+            [
+              "Storage",
+              "600 MB free"
+            ],
+            [
+              "Screen",
+              "1920 × 1080, or a touch screen for clocking in"
+            ],
+            [
+              "Extras",
+              "Windows Hello (face or fingerprint) for quick sign-in"
+            ]
           ],
           "setup": [
             "Download the installer and open it.",
@@ -109,18 +217,48 @@
         },
         "android": {
           "minimum": [
-            ["System", "Android 6.0 or later"],
-            ["Memory", "2 GB RAM"],
-            ["Storage", "300 MB free"],
-            ["Screen", "5-inch phone"],
-            ["Internet", "Needed to reach your business's shared storage"]
+            [
+              "System",
+              "Android 6.0 or later"
+            ],
+            [
+              "Memory",
+              "2 GB RAM"
+            ],
+            [
+              "Storage",
+              "300 MB free"
+            ],
+            [
+              "Screen",
+              "5-inch phone"
+            ],
+            [
+              "Internet",
+              "Needed to reach your business's shared storage"
+            ]
           ],
           "recommended": [
-            ["System", "Android 12 or later"],
-            ["Memory", "4 GB RAM"],
-            ["Storage", "500 MB free"],
-            ["Screen", "6-inch phone or larger"],
-            ["Extras", "Fingerprint or face unlock for quick sign-in"]
+            [
+              "System",
+              "Android 12 or later"
+            ],
+            [
+              "Memory",
+              "4 GB RAM"
+            ],
+            [
+              "Storage",
+              "500 MB free"
+            ],
+            [
+              "Screen",
+              "6-inch phone or larger"
+            ],
+            [
+              "Extras",
+              "Fingerprint or face unlock for quick sign-in"
+            ]
           ],
           "setup": [
             "Download the .apk on the phone.",

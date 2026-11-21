@@ -16,7 +16,7 @@ public sealed partial class Downloads(string folder)
 {
     public const long MaxBytes = 600L * 1024 * 1024;
 
-    [GeneratedRegex(@"^(ShifenzaTeam|Shifenza)-v(\d+\.\d+\.\d+)-(Windows|Android|iOS|Mac|Linux)[A-Za-z0-9_-]*\.(zip|apk|exe|msi|ipa|dmg)$", RegexOptions.IgnoreCase)]
+    [GeneratedRegex(@"^(ShifenzaTeam|Shifenza)-v(\d+\.\d+\.\d+)-(Windows|Android)[A-Za-z0-9_-]*\.(zip|apk|exe|msi)$", RegexOptions.IgnoreCase)]
     private static partial Regex NamePattern();
 
     public static bool ValidName(string? name) => name is not null && name.Length <= 120 && NamePattern().IsMatch(name);
