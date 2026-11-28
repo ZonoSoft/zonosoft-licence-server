@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ZonoSoft HR for Windows guide | ZonoSoft</title>
-<meta name="description" content="For managers on a Windows PC or laptop: install, set up your business, plan rotas, clocking, timesheets and payroll.">
+<meta name="description" content="For managers on a Windows PC or laptop: install, set up your business, plan rotas, clocking, timesheets, payroll and staff records.">
 <meta name="theme-color" content="#0d6660">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <meta property="og:title" content="ZonoSoft HR for Windows guide | ZonoSoft">
-<meta property="og:description" content="For managers on a Windows PC or laptop: install, set up your business, plan rotas, clocking, timesheets and payroll.">
+<meta property="og:description" content="For managers on a Windows PC or laptop: install, set up your business, plan rotas, clocking, timesheets, payroll and staff records.">
 <meta property="og:image" content="https://zonosoft.co.uk/img/rota.webp">
 </head>
 <body>
@@ -63,10 +63,11 @@
       <h2 id="first">First start</h2>
 
       <ol class="steps">
+        <li><strong>Set up your business.</strong> A new install starts with a short setup: your business name and address, positions, opening hours, clocking-in places and their GPS points, holiday and pay. Every step can be skipped and changed later in Settings.</li>
         <li><strong>Create the manager login.</strong> Choose your name, a username and a password. This login can do everything, including making logins for your team.</li>
         <li><strong>Joining an existing business?</strong> If the business already uses ZonoSoft HR on another device, choose <strong>Join the business's shared data</strong> instead, and enter the join code and passphrase a manager made for you (see Using more than one device below).</li>
         <li>After signing in, the app offers Windows Hello (fingerprint, face or Windows Hello PIN) sign-in for next time. It's optional; the check happens inside the PC.</li>
-        <li>Enter your licence key (or a free demo key, which you can <a href="mailto:ZonoSoft@outlook.com?subject=ZonoSoft HR%20Workforce%20demo%20key">ask us for by email</a>) in Settings, then Licence. Until a key is entered, the app is read-only.</li>
+        <li>Enter your licence key (or a free demo key, which you can <a href="mailto:ZonoSoft@outlook.com?subject=ZonoSoft%20HR%20demo%20key">ask us for by email</a>) in Settings, then Licence. Until a key is entered, the app is read-only.</li>
       </ol>
       <p>Want to look around first? Settings, then Data &amp; security, then <strong>Load sample data</strong> fills the app with a sample team.</p>
 
@@ -89,11 +90,24 @@
         <li>Drag the ⠿ handle to put the team in your own order; rotas, payroll and printouts follow it. People who leave can be archived.</li>
       </ol>
 
+      <h2 id="records">Staff records</h2>
+
+      <p>Open a person in <strong>Staff</strong> to see their profile. The tabs along the top hold their whole record. Everything here is for managers only; the Team app never receives it.</p>
+      <ul>
+        <li><strong>Details:</strong> contact details, emergency contacts, job title, start date, probation, pay rate, NI number and bank details (shown only when you press <strong>Show and edit</strong>; each look is noted in the audit log), notes and the change history. Payroll numbers fill in by themselves; tick <strong>Set my own</strong> to type your own.</li>
+        <li><strong>Documents:</strong> add files such as contracts, ID and fit notes, with expiry dates. <strong>Write a letter</strong> fills in an offer letter, written statement, probation, disciplinary or grievance letter, resignation letter or reference from the record; fill in the parts in [square brackets] and save it as a PDF. You can change the standard wording for your business.</li>
+        <li><strong>Sickness:</strong> record each spell, fit notes and the back-to-work chat, and mark the days SICK on the rota. The tab shows the Bradford factor and an estimate of statutory sick pay. When a team member says they're off sick from the Team app, it appears here to record.</li>
+        <li><strong>Leave:</strong> maternity, paternity, adoption, shared parental, parental, neonatal care, carer's, bereavement, dependants and jury service, with the rules, key dates and statutory pay for each.</li>
+        <li><strong>Starting and leaving:</strong> right to work checks (with a reminder before a time limit runs out), the starting checklist, and when someone leaves, the leaving checklist, holiday owed, P45 date and how long to keep their records.</li>
+        <li><strong>Reviews</strong> and <strong>Disciplinary and grievance:</strong> probation reviews, one-to-ones, yearly reviews, and cases that follow the ACAS Code, with warnings that expire.</li>
+      </ul>
+      <p>When a team member asks for their details to be changed, the request shows at the top of their profile. <strong>Fill in</strong> puts it into the form for you to check and save, or <strong>Decline</strong> it with a reason. The home screen's <strong>For your attention</strong> list shows requests, sickness, expiring documents, reviews and other dates coming up. Change the starting and leaving checklists and the usual probation in Settings → Operations → Staff records.</p>
+
       <h2 id="rota">Plan the rota</h2>
 
       <ol class="steps">
         <li>Open <strong>Rota</strong>. Use the arrows or <strong>This week</strong> to choose the week.</li>
-        <li>Click a day for a person to add a shift. Type the start and end times (for example 9, 930 or 17:45) or use the time selector. You can also mark the day OFF, HOL (holiday), SICK, UNPD (unpaid), TRN (training) or BH (bank holiday), make a split shift, and apply it to other days.</li>
+        <li>Click a day for a person to add a shift. Type the start and end times (for example 9, 930 or 17:45) or use the time selector. You can also mark the day OFF, HOL (holiday), SICK, UNPD (unpaid), TRN (training) BH (bank holiday) or LEAVE (family or other leave), make a split shift, and apply it to other days.</li>
         <li>Speed things up with <strong>Copy last week</strong>, <strong>Templates</strong> or <strong>Auto-fill</strong> (from each person's availability).</li>
         <li>Check the warnings: gaps in cover, missed breaks, under-18 rules and hours over contract.</li>
         <li><strong>Print</strong>, <strong>Save PDF</strong>, <strong>Excel</strong> or <strong>Email</strong> the A4 rota. Right-click a day for codes, copy and paste. Later changes are kept in the rota history.</li>
@@ -132,6 +146,14 @@
         <li>Lock the period when it's right; later changes are recorded.</li>
         <li><strong>Email finance</strong> sends a PDF and spreadsheet to your payroll team, or use <strong>Export to Excel</strong>.</li>
       </ol>
+
+      <h2 id="reports">HR reports</h2>
+
+      <ul>
+        <li><strong>HR reports</strong> on the main menu shows headcount and turnover, sickness, holiday this year and what's coming up.</li>
+        <li><strong>Download the HR report</strong> or the <strong>6-year holiday record</strong> (holiday records must be kept for 6 years) as Excel files.</li>
+        <li>If someone asks for a copy of their information, open their profile and choose <strong>Their data</strong> under Manage. Check it before sending, and reply within one month.</li>
+      </ul>
 
       <h2 id="devices">Using more than one device</h2>
 
