@@ -9,23 +9,27 @@ public sealed record DownloadFile(string Name, string Product, string Platform, 
 
 /// <summary>
 /// The app installers people download from the website. ZonoSoft uploads them on the admin page; they're kept in the
-/// data folder and the website lists the newest of each (Shifenza / Shifenza Team, Windows / Android).
-/// File names follow the build names, e.g. Shifenza-v0.38.0-Windows-Setup.exe or ShifenzaTeam-v0.38.0-Android.apk.
+/// data folder and the website lists the newest of each (ZonoSoft HR / ZonoSoft HR Team, Windows / Android).
+/// File names follow the build names, e.g. ZonoSoftHR-v0.39.0-Windows-Setup.exe or ZonoSoftHRTeam-v0.39.0-Android.apk (Shifenza builds from before the rename are still read).
 /// </summary>
 public sealed partial class Downloads(string folder)
 {
     public const long MaxBytes = 600L * 1024 * 1024;
 
-    [GeneratedRegex(@"^(ShifenzaTeam|Shifenza)-v(\d+\.\d+\.\d+)-(Windows|Android)[A-Za-z0-9_-]*\.(zip|apk|exe|msi)$", RegexOptions.IgnoreCase)]
+    [GeneratedRegex(@"^(ZonoSoftHRTeam|ZonoSoftHR|ShifenzaTeam|Shifenza)-v(\d+\.\d+\.\d+)-(Windows|Android)[A-Za-z0-9_-]*\.(zip|apk|exe|msi)$", RegexOptions.IgnoreCase)]
     private static partial Regex NamePattern();
 
     public static bool ValidName(string? name) => name is not null && name.Length <= 120 && NamePattern().IsMatch(name);
+
+    /// <summary>The free team members' app (its downloads are public).</summary>
+    public static bool IsTeamApp(string name) => Parse(name) is { Product: "hr-team" };
 
     private static (string Product, string Platform, string Version)? Parse(string name)
     {
         var m = NamePattern().Match(name);
         if (!m.Success) return null;
-        var product = m.Groups[1].Value.EndsWith("Team", StringComparison.OrdinalIgnoreCase) ? "team" : "workforce";
+        // Shifenza builds (before the rename to ZonoSoft HR) count as the same products
+        var product = m.Groups[1].Value.EndsWith("Team", StringComparison.OrdinalIgnoreCase) ? "hr-team" : "hr";
         var platform = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(m.Groups[3].Value.ToLowerInvariant());
         return (product, platform, m.Groups[2].Value);
     }

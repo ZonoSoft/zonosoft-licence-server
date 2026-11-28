@@ -38,7 +38,7 @@ public sealed class LicenceService(LicenceStore store, TokenSigner signer, TimeP
     public static string? CleanNonce(string? nonce) =>
         nonce is { Length: >= 16 and <= 64 } n && n.All(char.IsAsciiLetterOrDigit) ? n : null;
 
-    public string Token(Licence l, string installId, string businessName, string? nonce = null)
+    public string Token(Licence l, string installId, string businessName, string? nonce = null, string? appVersion = null)
     {
         var now = clock.GetUtcNow().UtcDateTime;
         var status = l.Status != "active" ? l.Status
@@ -49,7 +49,7 @@ public sealed class LicenceService(LicenceStore store, TokenSigner signer, TimeP
         {
             ["v"] = 1,
             ["lid"] = l.Id,
-            ["prd"] = l.Product,
+            ["prd"] = Products.TokenId(l.Product, appVersion),
             ["iid"] = installId,
             ["bus"] = businessName.Length > 0 ? businessName : l.BusinessName,
             ["plan"] = l.Plan,
@@ -97,8 +97,9 @@ public sealed class LicenceService(LicenceStore store, TokenSigner signer, TimeP
         {
             return new(403, null, "revoked", "This licence has been cancelled. Contact ZonoSoft.");
         }
-        // A key only works in the software it was made for (apps that don't say which they are are treated as Shifenza)
-        var asking = string.IsNullOrWhiteSpace(r.Product) ? Products.Default : r.Product.Trim().ToLowerInvariant();
+        // A key only works in the software it was made for (apps that don't say which they are are treated as ZonoSoft HR;
+        // apps from before the rename ask as "shifenza", which is the same product)
+        var asking = Products.Find(string.IsNullOrWhiteSpace(r.Product) ? Products.Default : r.Product)?.Id ?? r.Product!.Trim().ToLowerInvariant();
         if (licence.Product != asking)
         {
             return new(403, null, "wrong_product", $"This key is for {Products.NameOf(licence.Product)}, not this app.");
@@ -113,7 +114,7 @@ public sealed class LicenceService(LicenceStore store, TokenSigner signer, TimeP
             return new(409, null, "in_use",
                 "This licence key is already in use for another business or PC. Deactivate it there first (Settings → Licence), or contact ZonoSoft to move it.");
         }
-        return new(200, Token(licence, installId, business, r.Nonce), null, null);
+        return new(200, Token(licence, installId, business, r.Nonce, r.AppVersion), null, null);
     }
 
     /// <summary>Reads a token this server signed (null when the signature doesn't match).</summary>
@@ -135,7 +136,7 @@ public sealed class LicenceService(LicenceStore store, TokenSigner signer, TimeP
             return new(409, null, "released", "This licence was deactivated for this business. Enter the licence key again.");
         var business = (string?)payload["bus"] ?? "";
         store.Activate(licence, iid, business, "", "", Clip(r.AppVersion, 20));   // updates "last seen"
-        return new(200, Token(licence, iid, business, r.Nonce), null, null);
+        return new(200, Token(licence, iid, business, r.Nonce, r.AppVersion), null, null);
     }
 
     public ApiResult Deactivate(RefreshRequest r)

@@ -93,7 +93,7 @@
 
     <section class="card">
       <h2>Downloads on the website</h2>
-      <p class="muted">Upload the builds with their own file names (e.g. Shifenza-v0.38.0-Windows-Setup.exe, Shifenza-v0.38.0-Android.apk, ShifenzaTeam-v0.38.0-Windows-Setup.exe, ShifenzaTeam-v0.38.0-Android.apk). The website offers the newest of each.</p>
+      <p class="muted">Upload the builds with their own file names (e.g. ZonoSoft HR-v0.38.0-Windows-Setup.exe, ZonoSoft HR-v0.38.0-Android.apk, ZonoSoftHRTeam-v0.38.0-Windows-Setup.exe, ZonoSoftHRTeam-v0.38.0-Android.apk). The website offers the newest of each.</p>
       <p><input id="upFiles" type="file" multiple accept=".zip,.apk,.exe,.msi"> <button class="primary" id="upGo">Upload</button></p>
       <div id="upProgress" class="muted"></div>
       <div class="bulk"><span id="fileCount" class="muted">None selected</span> <button class="danger" id="bulkFiles" disabled>Delete selected</button></div>
@@ -209,7 +209,7 @@ async function load() {
       </td></tr>`;
   }).join("") || `<tr><td colspan="9" class="muted">No licences yet.</td></tr>`;
   const files = await api("/downloads");
-  $("downloads").innerHTML = files.map(f => `<tr><td><input type="checkbox" class="selFile" value="${esc(f.name)}" aria-label="Select ${esc(f.name)}"></td><td><a href="/downloads/${encodeURIComponent(f.name)}">${esc(f.name)}</a><div class="muted">SHA-256 ${esc(f.sha256.slice(0, 16))}…</div></td><td>${f.product === "team" ? "Shifenza Team" : "Shifenza"} · ${esc(f.platform)}</td><td>${esc(f.version)}</td><td>${(f.bytes / 1048576).toFixed(1)} MB</td><td>${when(f.uploadedUtc)}</td><td><button class="danger" data-delfile="${esc(f.name)}">Delete</button></td></tr>`).join("") || `<tr><td colspan="7" class="muted">No downloads yet — upload the builds above.</td></tr>`;
+  $("downloads").innerHTML = files.map(f => `<tr><td><input type="checkbox" class="selFile" value="${esc(f.name)}" aria-label="Select ${esc(f.name)}"></td><td><a href="/downloads/${encodeURIComponent(f.name)}">${esc(f.name)}</a><div class="muted">SHA-256 ${esc(f.sha256.slice(0, 16))}…</div></td><td>${f.product === "hr-team" ? "ZonoSoft HR Team" : "ZonoSoft HR"} · ${esc(f.platform)}</td><td>${esc(f.version)}</td><td>${(f.bytes / 1048576).toFixed(1)} MB</td><td>${when(f.uploadedUtc)}</td><td><button class="danger" data-delfile="${esc(f.name)}">Delete</button></td></tr>`).join("") || `<tr><td colspan="7" class="muted">No downloads yet — upload the builds above.</td></tr>`;
   const ev = await api("/events");
   $("events").innerHTML = ev.map(e => `<tr><td class="muted">${when(e.at)}</td><td>${esc(e.what)}</td><td>${esc(e.detail)}</td><td class="muted">${esc(e.licenceId || "")}</td></tr>`).join("");
   window.licences = list;

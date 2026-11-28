@@ -8,14 +8,36 @@ public static class Products
 {
     public sealed record Product(string Id, string Name, string Covers);
 
-    public const string Default = "shifenza";
+    public const string Default = "zonosoft-hr";
 
     public static readonly IReadOnlyList<Product> All =
     [
-        new("shifenza", "Shifenza", "Shifenza and the Shifenza Team app"),
+        new("zonosoft-hr", "ZonoSoft HR", "ZonoSoft HR and the ZonoSoft HR Team app"),
     ];
 
-    public static Product? Find(string? id) => All.FirstOrDefault(p => p.Id == (id ?? "").Trim().ToLowerInvariant());
+    /// <summary>Ids products had before they were renamed (Shifenza became ZonoSoft HR in v0.39.0).</summary>
+    public static readonly IReadOnlyDictionary<string, string> PreviousIds = new Dictionary<string, string>
+    {
+        ["shifenza"] = "zonosoft-hr",
+    };
+
+    private static string Current(string? id)
+    {
+        var tidy = (id ?? "").Trim().ToLowerInvariant();
+        return PreviousIds.TryGetValue(tidy, out var now) ? now : tidy;
+    }
+
+    public static Product? Find(string? id) => All.FirstOrDefault(p => p.Id == Current(id));
 
     public static string NameOf(string? id) => Find(id)?.Name ?? id ?? "";
+
+    /// <summary>
+    /// The product id put in a token for this app version. Apps from before ZonoSoft HR's rename (v0.38 and earlier)
+    /// only know the old id, so they're given it until they update; otherwise their licence would stop working.
+    /// </summary>
+    public static string TokenId(string product, string? appVersion)
+    {
+        if (product != "zonosoft-hr") return product;
+        return Version.TryParse(appVersion, out var v) && v >= new Version(0, 39, 0) ? product : "shifenza";
+    }
 }

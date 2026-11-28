@@ -94,8 +94,8 @@ chmod 0600 "$ETC/import.key"
 openssl pkey -in "$ETC/import.key" -pubout -out "$DATA/import-public.pem"
 chown "$RUNAS:$RUNAS" "$DATA/import-public.pem"; chmod 0644 "$DATA/import-public.pem"
 
-# Only Shifenza builds are offered (the previous apps are discontinued)
-find "$DATA/downloads" -maxdepth 1 -name 'Zono*' -delete 2>/dev/null || true
+# The discontinued Zono apps' builds are removed (only ZonoSoft HR builds, and Shifenza ones from before its rename, are offered)
+find "$DATA/downloads" -maxdepth 1 \( -name 'ZonoWorkforce*' -o -name 'ZonoTeam*' \) -delete 2>/dev/null || true
 
 cat > "/etc/systemd/system/$SVC.service" <<UNIT
 [Unit]
@@ -149,10 +149,22 @@ $WEB {
         X-Frame-Options "DENY"
         Permissions-Policy "camera=(), microphone=(), geolocation=()"
     }
-    # The app's pages moved from /workforce to /shifenza
-    redir /workforce /shifenza permanent
+    # The app's pages moved from /workforce to /shifenza, then to /hr (ZonoSoft HR)
+    redir /hr/guides/shifenza-windows /hr/guides/hr-windows permanent
+    redir /hr/guides/shifenza-android /hr/guides/hr-android permanent
+    redir /workforce /hr permanent
+    redir /shifenza /hr permanent
     handle_path /workforce/* {
-        redir * /shifenza{uri} permanent
+        redir * /hr{uri} permanent
+    }
+    handle_path /shifenza/guides/shifenza-windows {
+        redir * /hr/guides/hr-windows permanent
+    }
+    handle_path /shifenza/guides/shifenza-android {
+        redir * /hr/guides/hr-android permanent
+    }
+    handle_path /shifenza/* {
+        redir * /hr{uri} permanent
     }
     @app path /portal /portal/* /api/* /downloads/*
     handle @app {

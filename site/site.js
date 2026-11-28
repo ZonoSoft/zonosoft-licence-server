@@ -44,8 +44,8 @@
     const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
     const mb = b => (b / 1048576).toFixed(0) + " MB";
     const day = s => new Date(s).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
-    const app = p => p === "team" ? "Shifenza Team" : "Shifenza";
-    const who = p => p === "team" ? "For team members: clock in, shifts and holiday" : "For managers: rota, payroll, staff and settings";
+    const app = p => p === "hr-team" ? "ZonoSoft HR Team" : "ZonoSoft HR";
+    const who = p => p === "hr-team" ? "For team members: clock in, shifts and holiday" : "For managers: rota, payroll, staff and settings";
     const here = encodeURIComponent(location.pathname);
     Promise.all([
       fetch("/api/v1/downloads").then(r => r.ok ? r.json() : Promise.reject()),
@@ -53,7 +53,7 @@
     ])
       .then(([files, session]) => {
         if (!files.length) throw new Error("none");
-        files.sort((a, b) => (a.product === b.product ? 0 : a.product === "workforce" ? -1 : 1) || b.platform.localeCompare(a.platform));
+        files.sort((a, b) => (a.product === b.product ? 0 : a.product === "hr" ? -1 : 1) || b.platform.localeCompare(a.platform));
         const gate = session.signedIn ? "" : `
           <div class="notice dl-gate">
             <p><strong>Downloads are for ZonoSoft account holders.</strong> Creating an account is free and takes a minute. The app needs a licence key, or email ZonoSoft@outlook.com for a free demo key to try it first.</p>

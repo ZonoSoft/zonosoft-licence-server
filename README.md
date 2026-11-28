@@ -1,6 +1,6 @@
 # ZonoSoft licence server
 
-Licences, demo keys, the customer portal, app updates and the zonosoft.co.uk website for Shifenza and Shifenza Team.
+Licences, demo keys, the customer portal, app updates and the zonosoft.co.uk website for ZonoSoft HR and ZonoSoft HR Team.
 A small ASP.NET Core service (`src/ZonoSoft.Licence`) with SQLite, behind Caddy for HTTPS.
 
 For the apps:

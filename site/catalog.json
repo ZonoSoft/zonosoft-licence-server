@@ -13,17 +13,17 @@
   ],
   "products": [
     {
-      "id": "shifenza",
-      "download": "workforce",
-      "name": "Shifenza",
-      "icon": "/img/shifenza-icon.svg",
+      "id": "zonosoft-hr",
+      "download": "hr",
+      "name": "ZonoSoft HR",
+      "icon": "/img/zonosoft-hr-icon.svg",
       "tagline": "Rotas, clocking in, holidays and payroll hours for managers.",
       "info": [
-        "Shifenza is for the manager. Plan the weekly rota and print it on one A4 page, book holiday and absence, see who's clocked in, check timesheets and send payroll hours to whoever does your pay.",
+        "ZonoSoft HR is for the manager. Plan the weekly rota and print it on one A4 page, book holiday and absence, see who's clocked in, check timesheets and send payroll hours to whoever does your pay.",
         "Your business's data stays in your own storage: on your PC, or shared through your own OneDrive, Google Drive or network folder, encrypted. ZonoSoft never sees it.",
         "Needs a licence key (£12 a month including 5 team members), or a free demo key to try it first."
       ],
-      "learnMore": "/shifenza",
+      "learnMore": "/hr",
       "platforms": {
         "windows": {
           "minimum": [
@@ -82,9 +82,9 @@
             "Download the installer and open it.",
             "If Windows shows \"Windows protected your PC\", choose <strong>More info</strong>, then <strong>Run anyway</strong>.",
             "Follow the steps. You don't need to be an administrator, and nothing else needs installing.",
-            "Open Shifenza from the Start menu, create the first manager's login, then enter your licence or demo key in Settings, Licence."
+            "Open ZonoSoft HR from the Start menu, create the first manager's login, then enter your licence or demo key in Settings, Licence."
           ],
-          "guide": "/shifenza/guides/shifenza-windows"
+          "guide": "/hr/guides/hr-windows"
         },
         "android": {
           "minimum": [
@@ -134,25 +134,25 @@
           "setup": [
             "Download the .apk on the phone or tablet.",
             "Open it. When asked, allow your browser to install apps.",
-            "Tap <strong>Install</strong>, then open Shifenza.",
+            "Tap <strong>Install</strong>, then open ZonoSoft HR.",
             "Create the first manager's login, then enter your licence or demo key in Settings, Licence."
           ],
-          "guide": "/shifenza/guides/shifenza-android"
+          "guide": "/hr/guides/hr-android"
         }
       }
     },
     {
-      "id": "shifenza-team",
-      "download": "team",
-      "name": "Shifenza Team",
-      "icon": "/img/shifenza-icon.svg",
+      "id": "zonosoft-hr-team",
+      "download": "hr-team",
+      "name": "ZonoSoft HR Team",
+      "icon": "/img/zonosoft-hr-icon.svg",
       "tagline": "For team members: shifts, holiday requests and clocking in.",
       "info": [
-        "Shifenza Team is the app for your staff. Team members see their shifts, request holiday and clock in and out.",
-        "It joins your business with a team code from the manager and only sees what each team member is allowed to see. It's free: team members are covered by the business's Shifenza licence.",
+        "ZonoSoft HR Team is the app for your staff. Team members see their shifts, request holiday and clock in and out.",
+        "It joins your business with a team code from the manager and only sees what each team member is allowed to see. It's free: team members are covered by the business's ZonoSoft HR licence.",
         "Install it on a shared clocking-in PC or tablet, or on each team member's own phone."
       ],
-      "learnMore": "/shifenza#team",
+      "learnMore": "/hr#team",
       "platforms": {
         "windows": {
           "minimum": [
@@ -210,10 +210,10 @@
           "setup": [
             "Download the installer and open it.",
             "If Windows shows \"Windows protected your PC\", choose <strong>More info</strong>, then <strong>Run anyway</strong>.",
-            "Follow the steps, then open Shifenza Team from the Start menu.",
+            "Follow the steps, then open ZonoSoft HR Team from the Start menu.",
             "Enter the team code your manager gives you (it starts SFZ1-)."
           ],
-          "guide": "/shifenza/guides/team-windows"
+          "guide": "/hr/guides/team-windows"
         },
         "android": {
           "minimum": [
@@ -263,10 +263,10 @@
           "setup": [
             "Download the .apk on the phone.",
             "Open it. When asked, allow your browser to install apps.",
-            "Tap <strong>Install</strong>, then open Shifenza Team.",
+            "Tap <strong>Install</strong>, then open ZonoSoft HR Team.",
             "Enter the team code your manager gives you (it starts SFZ1-)."
           ],
-          "guide": "/shifenza/guides/team-android"
+          "guide": "/hr/guides/team-android"
         }
       }
     }

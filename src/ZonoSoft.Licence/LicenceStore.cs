@@ -64,7 +64,9 @@ public sealed class LicenceStore
         AddColumn(c, "licences", "account_id", "TEXT NULL");
         AddColumn(c, "licences", "key_enc", "TEXT NOT NULL DEFAULT ''");
         // v7: which ZonoSoft software the licence is for
-        AddColumn(c, "licences", "product", "TEXT NOT NULL DEFAULT 'shifenza'");
+        AddColumn(c, "licences", "product", "TEXT NOT NULL DEFAULT 'zonosoft-hr'");
+        // v8: Shifenza was renamed ZonoSoft HR (v0.39.0): its licences carry the new id
+        Exec(c, "UPDATE licences SET product = 'zonosoft-hr' WHERE product = 'shifenza';");
 
         // v6: cancelled licences can be deleted for good. Only the licence id and its key's hash are kept, so the key
         // can never work or be issued again; nothing about the business is kept.

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.RateLimiting;
 using ZonoSoft.Licence;
 
-// ZonoSoft licence server: activates and refreshes Shifenza licences, with an admin page for ZonoSoft.
+// ZonoSoft licence server: activates and refreshes ZonoSoft HR licences, with an admin page for ZonoSoft.
 // Settings (environment): ZONOSOFT_DATA (folder for the database and signing key), ZONOSOFT_ADMIN_KEY_FILE, ZONOSOFT_URLS.
 var builder = WebApplication.CreateBuilder(args);
 var dataDir = Environment.GetEnvironmentVariable("ZONOSOFT_DATA") ?? Path.Combine(AppContext.BaseDirectory, "data");
@@ -104,12 +104,12 @@ app.MapGet("/api/v1/downloads", (Downloads d) => Results.Json(d.Latest().Select(
 {
     f.Name, f.Product, f.Platform, f.Version, f.Bytes, f.Sha256, f.UploadedUtc, Url = "/downloads/" + f.Name
 })));
-// Shifenza needs a signed-in ZonoSoft account to download; the free Shifenza Team app (for a business's staff, who
+// ZonoSoft HR needs a signed-in ZonoSoft account to download; the free ZonoSoft HR Team app (for a business's staff, who
 // get the link from their manager) doesn't. Downloads aren't logged.
 app.MapGet("/downloads/{name}", (string name, Downloads d, CustomerStore store, HttpContext c) =>
 {
     if (!Downloads.ValidName(name) || !File.Exists(d.PathOf(name))) return Results.NotFound();
-    var teamApp = name.StartsWith("ShifenzaTeam-", StringComparison.Ordinal);
+    var teamApp = Downloads.IsTeamApp(name);
     if (!teamApp && store.SessionAccount(SessionToken(c)) is null)
         return Results.Redirect("/portal?next=" + Uri.EscapeDataString("/software"));
     c.Response.Headers.CacheControl = "private, no-store";
@@ -126,10 +126,11 @@ app.MapPost("/api/v1/update", (UpdateRequest r, Downloads d, LicenceStore licenc
 {
     if (r.MachineId is not { Length: >= 16 and <= 128 } mid)
         return Results.Json(new { ok = false, message = "Missing check code." }, statusCode: 400);
-    var product = r.Product?.ToLowerInvariant() == "team" ? "team" : "workforce";
-    // Shifenza needs its licence or demo key; the free Shifenza Team app (which has no key of its own) is always answered
+    // ZonoSoft HR asks as "hr" or "hr-team"; apps from before the rename ask as "workforce" or "team"
+    var product = r.Product?.ToLowerInvariant() is "team" or "hr-team" ? "hr-team" : "hr";
+    // ZonoSoft HR needs its licence or demo key; the free ZonoSoft HR Team app (which has no key of its own) is always answered
     var licensed = licensing.Read(r.Token) is { } t && (string?)t["lid"] is { } lid && licences.Get(lid) is { Status: not "revoked" };
-    if (!licensed && product != "team")
+    if (!licensed && product != "hr-team")
         return Results.Json(new { ok = false, message = "Updates need a licence or demo key." }, statusCode: 403);
     var platform = (r.Platform ?? "").ToLowerInvariant();
     var ext = platform switch { "windows" => ".exe", "android" => ".apk", _ => null };
@@ -376,7 +377,7 @@ admin.MapPost("/downloads", async (HttpContext c, Downloads d, LicenceStore s) =
 {
     var name = c.Request.Query["name"].ToString();
     if (!Downloads.ValidName(name))
-        return Results.Json(new { ok = false, message = "Use the build's own file name, e.g. Shifenza-v0.38.0-Windows-Setup.exe or ShifenzaTeam-v0.38.0-Android.apk." }, statusCode: 400);
+        return Results.Json(new { ok = false, message = "Use the build's own file name, e.g. ZonoSoftHR-v0.39.0-Windows-Setup.exe or ZonoSoftHRTeam-v0.39.0-Android.apk." }, statusCode: 400);
     try
     {
         var saved = await d.SaveAsync(name, c.Request.Body, c.RequestAborted);
