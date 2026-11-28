@@ -17,9 +17,9 @@
       "download": "hr",
       "name": "ZonoSoft HR",
       "icon": "/img/zonosoft-hr-icon.svg",
-      "tagline": "Rotas, clocking in, holidays and payroll hours for managers.",
+      "tagline": "Rotas, clocking in, payroll hours and staff records for managers.",
       "info": [
-        "ZonoSoft HR is for the manager. Plan the weekly rota and print it on one A4 page, book holiday and absence, see who's clocked in, check timesheets and send payroll hours to whoever does your pay.",
+        "ZonoSoft HR is for the manager. Plan the weekly rota and print it on one A4 page, book holiday and absence, see who's clocked in, check timesheets and send payroll hours to whoever does your pay. Keep each person's full record: documents and letters, sickness and sick pay, family leave, right to work, reviews, and disciplinary and grievance cases.",
         "Your business's data stays in your own storage: on your PC, or shared through your own OneDrive, Google Drive or network folder, encrypted. ZonoSoft never sees it.",
         "Needs a licence key (£12 a month including 5 team members), or a free demo key to try it first."
       ],
@@ -146,9 +146,9 @@
       "download": "hr-team",
       "name": "ZonoSoft HR Team",
       "icon": "/img/zonosoft-hr-icon.svg",
-      "tagline": "For team members: shifts, holiday requests and clocking in.",
+      "tagline": "For team members: shifts, holiday requests, clocking in and their own details.",
       "info": [
-        "ZonoSoft HR Team is the app for your staff. Team members see their shifts, request holiday and clock in and out.",
+        "ZonoSoft HR Team is the app for your staff. Team members see their shifts, request holiday, clock in and out, check their own details and tell their manager when they're off sick.",
         "It joins your business with a team code from the manager and only sees what each team member is allowed to see. It's free: team members are covered by the business's ZonoSoft HR licence.",
         "Install it on a shared clocking-in PC or tablet, or on each team member's own phone."
       ],
